@@ -8,6 +8,7 @@ import UserProgressContext from "../store/UserProgressContext";
 import Button from "../UI/Button";
 import Error from "./Error.jsx";
 import useHttp from "../hooks/useHttp.js";
+import { backendUrl } from "../url.js";
 
 const requestConfig = {
     method: 'POST',
@@ -26,7 +27,7 @@ const requestConfig = {
       error,
       sendRequest,
       clearData// this clear data func clears the prev data after form is submitted
-    } = useHttp('http://localhost:3000/orders', requestConfig);
+    } = useHttp(`${backendUrl}/orders`, requestConfig);
   
     const cartTotal = cartCtx.items.reduce(
       (totalPrice, item) => totalPrice + item.quantity * item.price,
